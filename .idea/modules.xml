@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/EstudentloanTNI.iml" filepath="$PROJECT_DIR$/EstudentloanTNI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sliding-menu-master/sliding-menu-master.iml" filepath="$PROJECT_DIR$/sliding-menu-master/sliding-menu-master.iml" />
+    </modules>
+  </component>
+</project>
