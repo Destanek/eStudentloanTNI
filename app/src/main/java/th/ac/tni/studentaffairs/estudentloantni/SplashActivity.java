@@ -12,6 +12,8 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        log.d("TestCommitFirstTime: ", "Success!");
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
