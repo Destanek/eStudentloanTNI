@@ -12,7 +12,7 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        log.d("TestCommitFirstTime: ", "Hello Too");
+        //log.d("TestCommitFirstTime: ", "Hello Too");
 
         new Handler().postDelayed(new Runnable() {
             @Override
