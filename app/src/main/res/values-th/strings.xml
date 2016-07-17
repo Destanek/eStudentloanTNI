@@ -1,0 +1,72 @@
+<resources>
+    <!--Header/Toolbar-->
+    <string name="toolbar_title">eStudentloan</string>
+    <string name="app_name">EstudentloanTNI</string>
+    <string name="login_title">เข้าสู่ระบบ</string>
+    <string name="button_login">เข้าสู่ระบบ</string>
+    <string name="news_tap">ข่าวสาร</string>
+    <string name="document_tap">เอกสาร</string>
+
+    <!--Button/View-->
+    <string name="register">สมัครสมาชิก</string>
+    <string name="action_settings">ตั้งค่า</string>
+    <string name="registration">ลงทะเบียนสมาชิกใหม่</string>
+    <string name="first_name">ชื่อ</string>
+    <string name="last_name">นามสกุล</string>
+    <string name="email_address">อีเมล</string>
+    <string name="password">รหัสผ่าน</string>
+    <string name="confirm_password">ยืนยันรหัสผ่าน</string>
+    <string name="btnCancel">ยกเลิก</string>
+    <string name="btnRegister">สมัคร</string>
+    <string name="member_already_ask">เป็นสมาชิกอยู่แล้ว, เข้าสู่ระบบ</string>
+    <string name="btnChange">เปลี่ยนแปลง</string>
+    <string name="confirm_new_password">ยืนยันรหัสผ่านใหม่</string>
+    <string name="new_password">รหัสผ่านใหม่</string>
+    <string name="old_password">รหัสผ่านเก่า</string>
+    <string name="change_password">เปลี่ยนรหัสผ่าน</string>
+    <string name="forget_password">ลืมรหัสผ่าน</string>
+    <string name="btnSave">บันทึก</string>
+    <string name="send">ส่ง</string>
+    <string name="edit_account">แก้ไขข้อมูลผู้ใช้</string>
+    <string name="menu_home">หน้าแรก</string>
+    <string name="menu_log_in">เข้าสู่ระบบ</string>
+    <string name="menu_setting">ตั้งค่า</string>
+    <string name="menu_help">ช่วยเหลือ</string>
+    <string name="menu_log_out">ออกจากระบบ</string>
+
+    <!--Notice/Announce-->
+    <string name="login_error_message">อีเมล หรือ รหัสผ่านไม่ถูกต้อง</string>
+    <string name="new_password_email">ส่งรหัสผ่านใหม่ไปยังอีเมล</string>
+    <string name="login_success">เข้าสู่ระบสำเร็จ</string>
+    <string name="incorrect_password">รหัสผ่านไม่ถูกต้อง</string>
+    <string name="network_error">เครือข่ายมีปัญหา โปรดลองใหม่อีกครั้ง</string>
+    <string name="forget_password_success">รหัสผ่านใหม่ถูกส่งไปยังอีเมลของคุณแล้ว</string>
+    <string name="change_password_success">เปลี่ยนรหัสผ่านสำเร็จ</string>
+    <string name="change_password_failed">ไม่สามารถเปลี่ยนรหัสผ่านได้</string>
+    <string name="valid_password_input">กรุณาใส่ตัวอักษรหรือตัวเลข ระหว่าง 4 ถึง 10 ตัว</string>
+    <string name="valid_email_input">อีเมลไม่ถูกต้อง</string>
+    <string name="invalid_confirm_password">ยืนยันรหัสผ่านไม่ตรงกับรหัสผ่าน</string>
+    <string name="edit_account_success">แก้ไขข้อมูลสำเร็จ</string>
+    <string name="edit_account_failed">ไม่สามารถแก้ไขข้อมูลได้</string>
+    <string name="valid_last_name_input">enter valid last name</string>
+    <string name="valid_first_name_input">enter valid first name</string>
+    <string name="no_input_text">กรุณาใส่ตัวอักษรอย่างน้อย 1 ตัว</string>
+    <string name="email_already_use">อีเมลนี้ได้ถูกใช้ไปแล้ว</string>
+    <string name="register_success">ลงทะเบียนสำเร็จ</string>
+    <string name="register_failed">ไม่สามารถลงทะเบียนได้</string>
+
+    <!--Handled Menu-->
+    <string name="help_selected">ช่วยเหลือ</string>
+    <string name="home_selected">หน้าแรก</string>
+    <string name="login_selected">เข้าสู่ระบบ</string>
+    <string name="logout_selected">ออกจากระบบสำเร็จ</string>
+    <string name="change_password_selected">เปลี่ยนรหัสผ่าน</string>
+    <string name="edit_account_selected">แกไขข้อมูลผู้ใช้</string>
+    <string name="setting_selected">การตั้งค่า</string>
+    <string name="wrong_selected">เกิดข้อผิดพลาด</string>
+    <string name="exit_ask">ต้องการออกจากแอปหรือไม่</string>
+    <string name="exit_title">ออก</string>
+    <string name="btnExit">ออก</string>
+    <string name="btnNo">ยกเลิก</string>
+
+</resources>

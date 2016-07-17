@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "837487699278",
+    "project_id": "estudentloantni"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837487699278:android:b5009e764c997f0c",
+        "android_client_info": {
+          "package_name": "th.ac.tni.studentaffairs.estudentloantni"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5S4FE_eZQphiNj0wzUfi7uB68fg7YvAI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,8 +1,9 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "24.0.0 rc1"
+    buildToolsVersion "23.0.3"
 
     defaultConfig {
         applicationId "th.ac.tni.studentaffairs.estudentloantni"
@@ -17,12 +18,27 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    // DataBinding(Support Library)
+    dataBinding {
+        enabled = true
+    }
 }
+
+// def = var
+def supportLibraryVersion = "23.3.0"
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.2.1'
-    compile 'com.jakewharton:butterknife:7.0.1'
-    compile project(':sliding-menu-master')
+    // Support Library
+    compile "com.android.support:appcompat-v7:${supportLibraryVersion}"
+    compile "com.android.support:design:${supportLibraryVersion}"
+    // Google Library
+    compile "com.google.android.gms:play-services-gcm:8.3.0"
+    // Firebase Library
+    compile 'com.firebase:firebase-client-android:2.5.2+'
+    // Other Library
+    compile 'com.pnikosis:materialish-progress:1.7'
+    compile 'com.github.d-max:spots-dialog:0.4@aar'
+    compile 'de.hdodenhof:circleimageview:1.3.0'
+//    compile 'com.jakewharton:butterknife:7.0.1' --> Change to DataBinding(Support Library)
 }

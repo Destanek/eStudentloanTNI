@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="th.ac.tni.studentaffairs.estudentloantni.SplashActivity">
+    tools:context=".activity.SplashActivity">
 
     <ImageView
         android:layout_width="match_parent"
@@ -18,14 +18,14 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="150dp"
-            android:layout_height="200dp"
+            android:layout_width="80dp"
+            android:layout_height="100dp"
             android:layout_gravity="center"
             android:src="@drawable/logo_tni"/>
 
         <ImageView
-            android:layout_width="300dp"
-            android:layout_height="100dp"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:src="@drawable/logo_tni_name"/>
 
