@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< HEAD
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:background="#A4C8D8"
@@ -14,9 +13,4 @@
         android:gravity="center"
         android:textSize="26sp"/>
 
-=======
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
->>>>>>> dev-chat
 </LinearLayout>

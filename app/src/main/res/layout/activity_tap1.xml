@@ -4,10 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/tap_fragment_1"
-<<<<<<< HEAD
     tools:context=".activity.MainActivity">
-=======
-    tools:context="th.ac.tni.studentaffairs.estudentloantni.MainActivity">
->>>>>>> dev-chat
+
 
 </FrameLayout>
