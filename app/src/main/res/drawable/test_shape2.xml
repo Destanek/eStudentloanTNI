@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-<<<<<<< HEAD
+
     <!--<item>-->
         <!--<shape android:shape="rectangle">-->
             <!--<solid android:color="@android:color/transparent"/>-->
@@ -16,7 +16,9 @@
                 android:startColor="#376a81"
                 android:endColor="#b6d3e0"
                 android:type="linear" />
-=======
+        </shape>
+    </item>
+
     <item>
         <shape android:shape="rectangle">
             <solid android:color="#CABBBBBB"/>
@@ -32,7 +34,7 @@
         <shape android:shape="rectangle">
             <solid android:color="#90CAF9"/>
             <corners android:radius="2dp" />
->>>>>>> dev-chat
+
         </shape>
     </item>
 </layer-list>
