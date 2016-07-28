@@ -1,14 +1,17 @@
 package th.ac.tni.studentaffairs.estudentloantni.fragment;
 
+import android.databinding.DataBindingUtil;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListView;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
@@ -18,42 +21,47 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import dmax.dialog.SpotsDialog;
+import th.ac.tni.studentaffairs.estudentloantni.R;
 import th.ac.tni.studentaffairs.estudentloantni.adapter.AdapterWebContent;
 import th.ac.tni.studentaffairs.estudentloantni.dao.DataModelWebContent;
-import th.ac.tni.studentaffairs.estudentloantni.R;
+import th.ac.tni.studentaffairs.estudentloantni.databinding.FragmentAnnounceBinding;
 
 public class AnnounceFragment extends Fragment {
 
-    private ListView lvWeb;
+    private FragmentAnnounceBinding binding;
+
     private ArrayList<DataModelWebContent> listWeb;
     private ArrayList<String> listDate;
     private AdapterWebContent adapterListWeb;
 
     android.app.AlertDialog spotDialog;
 
-    private View view;
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_announce, container, false);
-
+        binding = DataBindingUtil.inflate(inflater,
+                R.layout.fragment_announce,
+                container,
+                false);
+        View rootView = binding.getRoot();
         initialization();
-
         Title t2 = new Title();
         t2.execute();
-
-        return view;
+        return rootView;
     }
 
     private void initialization() {
-        lvWeb = (ListView) view.findViewById(R.id.lvWeb);
+        binding.swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshContent();
+            }
+        });
 
         listWeb = new ArrayList<DataModelWebContent>();
         listDate = new ArrayList<String>();
         adapterListWeb = new AdapterWebContent(getActivity(), listWeb);
-        lvWeb.setAdapter(adapterListWeb);
-        lvWeb.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        binding.lvWeb.setAdapter(adapterListWeb);
+        binding.lvWeb.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String getLink = adapterListWeb.getItem(position).getLink();
@@ -68,6 +76,21 @@ public class AnnounceFragment extends Fragment {
 
             }
         });
+
+    }
+
+    private void refreshContent(){
+
+        new Handler().postDelayed(new Runnable() {
+            @Override public void run() {
+                adapterListWeb.clear();
+                Title t2 = new Title();
+                t2.execute();
+                adapterListWeb = new AdapterWebContent(getActivity(), listWeb);
+                binding.lvWeb.setAdapter(adapterListWeb);
+                binding.swipeContainer.setRefreshing(false);
+            }
+        }, 5000);
 
     }
 
@@ -112,4 +135,18 @@ public class AnnounceFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("listWeb",listWeb);
+        outState.putStringArrayList("listDate",listDate);
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        if(savedInstanceState!=null){
+            Log.d("Restore", "Restored ");
+        }
+    }
 }

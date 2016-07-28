@@ -32,6 +32,7 @@ dependencies {
     // Support Library
     compile "com.android.support:appcompat-v7:${supportLibraryVersion}"
     compile "com.android.support:design:${supportLibraryVersion}"
+    compile "com.android.support:support-v4:${supportLibraryVersion}"
     // Google Library
     compile "com.google.android.gms:play-services-gcm:8.3.0"
     // Firebase Library

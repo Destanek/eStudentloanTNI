@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#93afae"
-    tools:context=".activity.MainActivity">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        android:layout_weight="1" >
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#93afae">
 
-        <ListView
-            android:id="@+id/lvWeb"
-            android:scrollbars="none"
-            android:divider="@android:color/transparent"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipeContainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1" >
 
-    </FrameLayout>
+            <ListView
+                android:id="@+id/lvWeb"
+                android:scrollbars="none"
+                android:divider="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
-</LinearLayout>
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </LinearLayout>
+</layout>
