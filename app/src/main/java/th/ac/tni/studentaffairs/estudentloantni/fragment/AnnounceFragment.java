@@ -1,10 +1,11 @@
 package th.ac.tni.studentaffairs.estudentloantni.fragment;
 
+import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
@@ -13,11 +14,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import dmax.dialog.SpotsDialog;
@@ -44,21 +49,28 @@ public class AnnounceFragment extends Fragment {
                 false);
         View rootView = binding.getRoot();
         initialization();
-        Title t2 = new Title();
-        t2.execute();
         return rootView;
     }
 
-    private void initialization() {
-        binding.swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                refreshContent();
-            }
-        });
+    private void checkData() {
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        Gson gson = new Gson();
+        String json = sharedPrefs.getString("Announce Data", null);
+        if(json!=null){
+            Type type = new TypeToken<ArrayList<DataModelWebContent>>() {}.getType();
+            listWeb = gson.fromJson(json, type);
+        }
+        else{
+            Title t2 = new Title();
+            t2.execute();
+        }
 
+    }
+
+    private void initialization() {
         listWeb = new ArrayList<DataModelWebContent>();
         listDate = new ArrayList<String>();
+        checkData();
         adapterListWeb = new AdapterWebContent(getActivity(), listWeb);
         binding.lvWeb.setAdapter(adapterListWeb);
         binding.lvWeb.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -77,15 +89,23 @@ public class AnnounceFragment extends Fragment {
             }
         });
 
+        binding.swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshContent();
+            }
+        });
+
     }
 
     private void refreshContent(){
 
         new Handler().postDelayed(new Runnable() {
             @Override public void run() {
-                adapterListWeb.clear();
+//                adapterListWeb.clear();
                 Title t2 = new Title();
                 t2.execute();
+                binding.lvWeb.setAdapter(null);
                 adapterListWeb = new AdapterWebContent(getActivity(), listWeb);
                 binding.lvWeb.setAdapter(adapterListWeb);
                 binding.swipeContainer.setRefreshing(false);
@@ -132,21 +152,14 @@ public class AnnounceFragment extends Fragment {
             // Set title into TextView
             spotDialog.dismiss();
             adapterListWeb.notifyDataSetChanged();
+            //cache data into Preference
+            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+            SharedPreferences.Editor editor = sp.edit();
+            Gson gson = new Gson();
+            String json = gson.toJson(listWeb);
+            editor.putString("Announce Data", json);
+            editor.commit();
         }
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putSerializable("listWeb",listWeb);
-        outState.putStringArrayList("listDate",listDate);
-    }
-
-    @Override
-    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
-        super.onViewStateRestored(savedInstanceState);
-        if(savedInstanceState!=null){
-            Log.d("Restore", "Restored ");
-        }
-    }
 }

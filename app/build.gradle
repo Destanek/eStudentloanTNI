@@ -37,6 +37,8 @@ dependencies {
     compile "com.google.android.gms:play-services-gcm:8.3.0"
     // Firebase Library
     compile 'com.firebase:firebase-client-android:2.5.2+'
+    //Gson Library
+    compile 'com.google.code.gson:gson:2.7'
     // Other Library
     compile 'com.pnikosis:materialish-progress:1.7'
     compile 'com.github.d-max:spots-dialog:0.4@aar'
