@@ -4,30 +4,27 @@
     android:layout_height="match_parent"
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
+    android:background="@drawable/row_selector"
     android:orientation="horizontal">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="5dp"
-        android:background="#DDE6E7E9" >
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="70dp"
             android:foregroundGravity="center_vertical"
             android:paddingTop="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
             android:src="@drawable/ic_info_outline_black"/>
-
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingRight="16dp"
             android:orientation="vertical"
             android:layout_gravity="center_vertical">
 

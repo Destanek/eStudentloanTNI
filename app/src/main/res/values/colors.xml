@@ -9,4 +9,7 @@
 
     <color name="btnNormal">#81a4b4</color>
     <color name="btnPressed">#23333a</color>
+
+    <color name="listSelected">#a3a3a3</color>
+    <color name="listNormal">#fff</color>
 </resources>

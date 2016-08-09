@@ -1,7 +1,10 @@
 package th.ac.tni.studentaffairs.estudentloantni.fragment;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -61,8 +65,10 @@ public class AnnounceFragment extends Fragment {
             listWeb = gson.fromJson(json, type);
         }
         else{
-            Title t2 = new Title();
-            t2.execute();
+            if(haveNetworkConnection()){
+                Title t2 = new Title();
+                t2.execute();
+            }
         }
 
     }
@@ -102,9 +108,10 @@ public class AnnounceFragment extends Fragment {
 
         new Handler().postDelayed(new Runnable() {
             @Override public void run() {
-//                adapterListWeb.clear();
-                Title t2 = new Title();
-                t2.execute();
+                if(haveNetworkConnection()){
+                    Title t2 = new Title();
+                    t2.execute();
+                }
                 binding.lvWeb.setAdapter(null);
                 adapterListWeb = new AdapterWebContent(getActivity(), listWeb);
                 binding.lvWeb.setAdapter(adapterListWeb);
@@ -112,6 +119,25 @@ public class AnnounceFragment extends Fragment {
             }
         }, 5000);
 
+    }
+
+    private boolean haveNetworkConnection() {
+        boolean haveConnectedWifi = false;
+        boolean haveConnectedMobile = false;
+
+        ConnectivityManager cm = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (activeNetwork != null) { // connected to the internet
+            if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI) {
+                haveConnectedWifi = true;
+                Toast.makeText(getContext(), activeNetwork.getTypeName(), Toast.LENGTH_SHORT).show();
+            } else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
+                haveConnectedMobile = true;
+            }
+        } else {
+            Toast.makeText(getContext(), "No Internet Connection!!", Toast.LENGTH_SHORT).show();
+        }
+        return haveConnectedWifi || haveConnectedMobile;
     }
 
     private class Title extends AsyncTask<Void, Void, Void> {
