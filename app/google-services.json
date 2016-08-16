@@ -1,20 +1,27 @@
 {
   "project_info": {
-    "project_number": "837487699278",
-    "project_id": "estudentloantni"
+    "project_number": "151672304406",
+    "firebase_url": "https://sizzling-torch-4935.firebaseio.com",
+    "project_id": "sizzling-torch-4935",
+    "storage_bucket": "sizzling-torch-4935.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:837487699278:android:b5009e764c997f0c",
+        "mobilesdk_app_id": "1:151672304406:android:b5009e764c997f0c",
         "android_client_info": {
           "package_name": "th.ac.tni.studentaffairs.estudentloantni"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "151672304406-qji94fulso1c8e520f1lccalpb0qtmru.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyA5S4FE_eZQphiNj0wzUfi7uB68fg7YvAI"
+          "current_key": "AIzaSyAGSk13SDlgIkO7NMdFNfciimPsWg4oj6I"
         }
       ],
       "services": {
@@ -26,7 +33,7 @@
           "other_platform_oauth_client": []
         },
         "ads_service": {
-          "status": 1
+          "status": 2
         }
       }
     }

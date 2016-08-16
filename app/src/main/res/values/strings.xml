@@ -70,5 +70,6 @@
     <string name="exit_title">Exit</string>
     <string name="btnExit">Yes</string>
     <string name="btnNo">No</string>
+    <string name="auth_failed">Sign up failed</string>
 
 </resources>

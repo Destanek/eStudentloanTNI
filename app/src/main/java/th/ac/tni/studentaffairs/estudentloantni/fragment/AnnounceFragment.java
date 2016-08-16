@@ -76,6 +76,7 @@ public class AnnounceFragment extends Fragment {
     private void initialization() {
         listWeb = new ArrayList<DataModelWebContent>();
         listDate = new ArrayList<String>();
+
         checkData();
         adapterListWeb = new AdapterWebContent(getActivity(), listWeb);
         binding.lvWeb.setAdapter(adapterListWeb);
@@ -117,7 +118,7 @@ public class AnnounceFragment extends Fragment {
                 binding.lvWeb.setAdapter(adapterListWeb);
                 binding.swipeContainer.setRefreshing(false);
             }
-        }, 5000);
+        }, 3000);
 
     }
 

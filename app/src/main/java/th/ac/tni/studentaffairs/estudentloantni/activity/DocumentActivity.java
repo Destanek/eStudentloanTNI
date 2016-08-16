@@ -12,7 +12,7 @@ import th.ac.tni.studentaffairs.estudentloantni.fragment.DocumentFragment;
 import th.ac.tni.studentaffairs.estudentloantni.fragment.LoginFragment;
 import th.ac.tni.studentaffairs.estudentloantni.R;
 
-public class Tap2Activity extends android.support.v4.app.Fragment {
+public class DocumentActivity extends android.support.v4.app.Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

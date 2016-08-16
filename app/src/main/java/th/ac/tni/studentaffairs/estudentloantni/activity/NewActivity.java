@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import th.ac.tni.studentaffairs.estudentloantni.fragment.AnnounceFragment;
 import th.ac.tni.studentaffairs.estudentloantni.R;
 
-public class Tap1Activity extends android.support.v4.app.Fragment {
+public class NewActivity extends android.support.v4.app.Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

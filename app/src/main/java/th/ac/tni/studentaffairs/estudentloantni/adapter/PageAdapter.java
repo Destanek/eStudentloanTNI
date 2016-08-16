@@ -4,8 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import th.ac.tni.studentaffairs.estudentloantni.activity.Tap1Activity;
-import th.ac.tni.studentaffairs.estudentloantni.activity.Tap2Activity;
+import th.ac.tni.studentaffairs.estudentloantni.activity.NewActivity;
+import th.ac.tni.studentaffairs.estudentloantni.activity.DocumentActivity;
 
 public class PageAdapter extends FragmentStatePagerAdapter {
 
@@ -21,10 +21,10 @@ public class PageAdapter extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0:
-                Tap1Activity tab1 = new Tap1Activity();
+                NewActivity tab1 = new NewActivity();
                 return tab1;
             case 1:
-                Tap2Activity tab2 = new Tap2Activity();
+                DocumentActivity tab2 = new DocumentActivity();
                 return tab2;
             default:
                 return null;

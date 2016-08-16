@@ -1,6 +1,5 @@
 package th.ac.tni.studentaffairs.estudentloantni.activity;
 
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -26,14 +25,13 @@ import com.firebase.client.ValueEventListener;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import th.ac.tni.studentaffairs.estudentloantni.R;
+import th.ac.tni.studentaffairs.estudentloantni.adapter.PageAdapter;
+import th.ac.tni.studentaffairs.estudentloantni.databinding.ActivityMainBinding;
 import th.ac.tni.studentaffairs.estudentloantni.fragment.ChangePasswordFragment;
 import th.ac.tni.studentaffairs.estudentloantni.fragment.DocumentFragment;
 import th.ac.tni.studentaffairs.estudentloantni.fragment.EditAccountFragment;
 import th.ac.tni.studentaffairs.estudentloantni.fragment.LoginFragment;
-import th.ac.tni.studentaffairs.estudentloantni.adapter.PageAdapter;
-import th.ac.tni.studentaffairs.estudentloantni.R;
-import th.ac.tni.studentaffairs.estudentloantni.manager.RegistrationService;
-import th.ac.tni.studentaffairs.estudentloantni.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,8 +44,6 @@ public class MainActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this,
                 R.layout.activity_main);
         Firebase.setAndroidContext(this);
-        Intent i = new Intent(this, RegistrationService.class);
-        startService(i);
         initInstance();
     }
 
@@ -95,13 +91,13 @@ public class MainActivity extends AppCompatActivity {
         final TextView email = (TextView) nav_header.findViewById(R.id.email);
         final CircleImageView photo = (CircleImageView) nav_header.findViewById(R.id.profile_image);
 
+
         final Firebase ref = new Firebase("https://sizzling-torch-4935.firebaseio.com/");
         ref.addAuthStateListener(new Firebase.AuthStateListener() {
             @Override
             public void onAuthStateChanged(AuthData authData) {
                 if (authData != null) {
                     // user is logged in
-//                    getSupportFragmentManager().beginTransaction().replace(R.id.tap_fragment_2,new DocumentFragment()).commit();
                     binding.navigationView.getMenu().clear();
                     binding.navigationView.inflateMenu(R.menu.drawer_login);
                     String uid = authData.getUid();
@@ -124,40 +120,40 @@ public class MainActivity extends AppCompatActivity {
                     photo.setImageResource(R.drawable.ic_user_login);
                 } else {
                     // user is not logged in
-//                    getSupportFragmentManager().beginTransaction().replace(R.id.tap_fragment_2,new LoginFragment()).commit();
                     binding.navigationView.getMenu().clear();
                     binding.navigationView.inflateMenu(R.menu.drawer);
                     user.setText(" ");
                     email.setText(" ");
                     photo.setImageResource(R.drawable.ic_user_logout);
+                    Log.e("logout","out");
                 }
             }
         });
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                    @Override
+                    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-            }
+                    }
 
-            @Override
-            public void onPageSelected(int position) {
-                switch (position) {
-                    case 0:
-                        binding.navigationView.getMenu().findItem(R.id.drawer_home).setChecked(true);
-                        break;
-                    case 1:
-                        binding.navigationView.getMenu().findItem(R.id.drawer_home).setChecked(false);
-                        break;
-                }
-            }
+                    @Override
+                    public void onPageSelected(int position) {
+                        switch (position) {
+                            case 0:
+                                binding.navigationView.getMenu().findItem(R.id.drawer_home).setChecked(true);
+                                break;
+                            case 1:
+                                binding.navigationView.getMenu().findItem(R.id.drawer_home).setChecked(false);
+                                break;
+                        }
+                    }
 
-            @Override
-            public void onPageScrollStateChanged(int state) {
+                    @Override
+                    public void onPageScrollStateChanged(int state) {
 
-            }
-        });
+                    }
+                });
 
         //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
         binding.navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
