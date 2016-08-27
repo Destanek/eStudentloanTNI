@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#A4C8D8"
+            android:paddingTop="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:clickable="true"
+                android:id="@+id/facebook"
+                android:background="@drawable/custom_bg"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_facebook"/>
+
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:text="กองทุนเงินให้กู้ยืมเพื่อการศึกษา สถาบันเทคโนโลยีไทย-ญี่ปุ่น"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:clickable="true"
+                android:id="@+id/website"
+                android:background="@drawable/custom_bg"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="50dp"
+                    android:src="@drawable/logo_tni"/>
+
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:text="ฝ่ายกิจการนักศักษา สถาบันเทคโนโลยีไทย-ญี่ปุ่น"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:clickable="true"
+                android:id="@+id/phone"
+                android:background="@drawable/custom_bg"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_phone"/>
+
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:text="ฝ่ายกิจการนักศักษา โทร 0-2763-2620-4"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+</layout>

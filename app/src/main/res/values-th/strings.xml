@@ -31,7 +31,7 @@
     <string name="menu_home">หน้าแรก</string>
     <string name="menu_log_in">เข้าสู่ระบบ</string>
     <string name="menu_setting">ตั้งค่า</string>
-    <string name="menu_help">ช่วยเหลือ</string>
+    <string name="menu_help">ติดต่อเรา</string>
     <string name="menu_log_out">ออกจากระบบ</string>
 
     <!--Notice/Announce-->
@@ -56,7 +56,7 @@
     <string name="register_failed">ไม่สามารถลงทะเบียนได้</string>
 
     <!--Handled Menu-->
-    <string name="help_selected">ช่วยเหลือ</string>
+    <string name="help_selected">ติดต่อเรา</string>
     <string name="home_selected">หน้าแรก</string>
     <string name="login_selected">เข้าสู่ระบบ</string>
     <string name="logout_selected">ออกจากระบบสำเร็จ</string>

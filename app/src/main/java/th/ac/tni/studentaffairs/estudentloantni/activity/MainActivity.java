@@ -29,6 +29,7 @@ import th.ac.tni.studentaffairs.estudentloantni.R;
 import th.ac.tni.studentaffairs.estudentloantni.adapter.PageAdapter;
 import th.ac.tni.studentaffairs.estudentloantni.databinding.ActivityMainBinding;
 import th.ac.tni.studentaffairs.estudentloantni.fragment.ChangePasswordFragment;
+import th.ac.tni.studentaffairs.estudentloantni.fragment.ContactFragment;
 import th.ac.tni.studentaffairs.estudentloantni.fragment.DocumentFragment;
 import th.ac.tni.studentaffairs.estudentloantni.fragment.EditAccountFragment;
 import th.ac.tni.studentaffairs.estudentloantni.fragment.LoginFragment;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private DrawerLayout drawerLayout;
+    boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -176,7 +178,9 @@ public class MainActivity extends AppCompatActivity {
 
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.drawer_help:
+                        viewPager.setCurrentItem(1);
                         Toast.makeText(getApplicationContext(), R.string.help_selected, Toast.LENGTH_SHORT).show();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.tap_fragment_2, new ContactFragment()).addToBackStack(MainActivity.class.getName()).commit();
                         return true;
                     // For rest of the options we just show a toast on click
                     case R.id.drawer_home:
@@ -261,10 +265,24 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        if (doubleBackToExitPressedOnce) {
+//            super.onBackPressed();
+//            return;
+//        }
+//
+//        this.doubleBackToExitPressedOnce = true;
+//        Toast.makeText(this, "Please press BACK again to exit", Toast.LENGTH_SHORT).show();
+//
+//        new Handler().postDelayed(new Runnable() {
+//
+//            @Override
+//            public void run() {
+//                doubleBackToExitPressedOnce=false;
+//            }
+//        }, 2000);
+//    }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {

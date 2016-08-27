@@ -33,7 +33,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_log_in">Log In</string>
     <string name="menu_setting">Setting</string>
-    <string name="menu_help">Help</string>
+    <string name="menu_help">Contact Us</string>
     <string name="menu_log_out">Log Out</string>
 
     <!--Notice/Announce-->
@@ -58,7 +58,7 @@
     <string name="register_failed">Register failed</string>
 
     <!--Handled Menu-->
-    <string name="help_selected">Help Selected</string>
+    <string name="help_selected">Contact Us Selected</string>
     <string name="home_selected">Home Selected</string>
     <string name="login_selected">Login Selected</string>
     <string name="logout_selected">Logout Successful</string>

@@ -3,16 +3,20 @@ package th.ac.tni.studentaffairs.estudentloantni.dao;
 import java.io.Serializable;
 
 public class DataModelWebContent implements Serializable {
-    public String title,link,date;
+    public String message,link,date,type;
 
-    public DataModelWebContent(String title,String link, String date) {
-        this.title = title;
+    public DataModelWebContent() {
+    }
+
+    public DataModelWebContent(String message,String link, String date,String type) {
+        this.message = message;
         this.link = link;
         this.date = date;
+        this.type = type;
     }
 
     public String getTitle() {
-        return title;
+        return message;
     }
 
     public String getLink() {
