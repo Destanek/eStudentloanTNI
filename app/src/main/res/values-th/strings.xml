@@ -33,6 +33,7 @@
     <string name="menu_setting">ตั้งค่า</string>
     <string name="menu_help">ติดต่อเรา</string>
     <string name="menu_log_out">ออกจากระบบ</string>
+    <string name="student_id">รหัสนักศึกษา</string>
 
     <!--Notice/Announce-->
     <string name="login_error_message">อีเมล หรือ รหัสผ่านไม่ถูกต้อง</string>

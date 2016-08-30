@@ -89,6 +89,7 @@ public class AnnounceFragment extends Fragment {
         listWeb = new ArrayList<DataModelWebContent>();
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
         mTopicRef = mDatabase.child("news");
         recyclerView = binding.recycleView;
 
@@ -116,6 +117,14 @@ public class AnnounceFragment extends Fragment {
 
             @Override
             public void onLongClick(View view, int position) {
+                DataModelWebContent topicList = listWeb.get(position);
+
+                Bundle b = new Bundle();
+                b.putString("url", topicList.getLink());
+                FragmentWebview f = new FragmentWebview();
+                f.setArguments(b);
+
+                getFragmentManager().beginTransaction().add(R.id.tap_fragment_1, f).hide(AnnounceFragment.this).addToBackStack(AnnounceFragment.class.getName()).commit();
 
             }
         }));

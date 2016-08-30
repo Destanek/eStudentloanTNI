@@ -1,6 +1,7 @@
 package th.ac.tni.studentaffairs.estudentloantni.fragment;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ public class ContactFragment extends Fragment implements View.OnClickListener {
     private String websiteURL = "http://studentaffairs.tni.ac.th/home/?page_id=1336";
     private FragmentWebview WebView;
     private Bundle b = new Bundle();
+    PackageManager pm;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,8 +46,14 @@ public class ContactFragment extends Fragment implements View.OnClickListener {
             case R.id.facebook:
                 b.putString("url", facebookURL);
                 WebView.setArguments(b);
+                try {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/228337813995344"));
+                    startActivity(intent);
+                } catch(Exception e) {
+//                    getFragmentManager().beginTransaction().add(R.id.tap_fragment_2, WebView).hide(ContactFragment.this).addToBackStack(AnnounceFragment.class.getName()).commit();
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(facebookURL)));
+                }
 
-                getFragmentManager().beginTransaction().add(R.id.tap_fragment_2, WebView).hide(ContactFragment.this).addToBackStack(AnnounceFragment.class.getName()).commit();
                 break;
             case R.id.website:
                 b.putString("url", websiteURL);
@@ -59,4 +67,5 @@ public class ContactFragment extends Fragment implements View.OnClickListener {
                 break;
         }
     }
+
 }

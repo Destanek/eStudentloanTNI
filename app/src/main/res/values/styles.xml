@@ -8,11 +8,18 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TapLayout" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="tabTextColor">#fff</item>
+        <item name="tabIndicatorColor">@color/colorTap</item>
+    </style>
+
     <style name="CustomDialog" parent="android:Theme.DeviceDefault.Light.Dialog">
         <item name="android:colorBackground">#99FFFFFF</item>
         <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
         <item name="DialogTitleText">Loading..</item>
-        <item name="DialogSpotColor">@android:color/holo_green_light</item>
+        <item name="DialogSpotColor">@android:color/holo_blue_bright</item>
         <item name="DialogSpotCount">4</item>
     </style>
 
@@ -20,7 +27,7 @@
         <item name="android:colorBackground">#FFFFFF</item>
         <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
         <item name="DialogTitleText">Loading..</item>
-        <item name="DialogSpotColor">@android:color/holo_red_dark</item>
+        <item name="DialogSpotColor">@android:color/holo_blue_dark</item>
         <item name="DialogSpotCount">4</item>
     </style>
 
@@ -28,7 +35,7 @@
         <item name="android:colorBackground">#FFFFFF</item>
         <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
         <item name="DialogTitleText">Creating Account...</item>
-        <item name="DialogSpotColor">@android:color/holo_blue_dark</item>
+        <item name="DialogSpotColor">@android:color/holo_green_light</item>
         <item name="DialogSpotCount">4</item>
     </style>
 
@@ -36,7 +43,7 @@
         <item name="android:colorBackground">#FFFFFF</item>
         <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
         <item name="DialogTitleText">Loging In...</item>
-        <item name="DialogSpotColor">@android:color/holo_orange_dark</item>
+        <item name="DialogSpotColor">@android:color/holo_green_dark</item>
         <item name="DialogSpotCount">4</item>
     </style>
 

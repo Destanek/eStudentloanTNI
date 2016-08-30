@@ -25,7 +25,7 @@ public class RegisterFragment extends Fragment {
     private FragmentRegisterBinding binding;
 
     private Firebase usersRef, ref;
-    String fname, lname, email, password, confirmPass;
+    String fname, lname, email, password, confirmPass, stuID;
 
     @Nullable
     @Override
@@ -81,6 +81,7 @@ public class RegisterFragment extends Fragment {
         email = binding.inputEmail.getText().toString();
         password = binding.inputPassword.getText().toString();
         confirmPass = binding.confirmPassword.getText().toString();
+        stuID = binding.inputStuid.getText().toString();
 
         new android.os.Handler().postDelayed(
                 new Runnable() {
@@ -103,6 +104,7 @@ public class RegisterFragment extends Fragment {
         userInfoMap.put("firstname", fname);
         userInfoMap.put("lastname", lname);
         userInfoMap.put("email", email);
+        userInfoMap.put("stuid", stuID);
 
         ref.createUser(email, password, new Firebase.ValueResultHandler<Map<String, Object>>() {
             @Override
@@ -147,6 +149,7 @@ public class RegisterFragment extends Fragment {
         email = binding.inputEmail.getText().toString();
         password = binding.inputPassword.getText().toString();
         confirmPass = binding.confirmPassword.getText().toString();
+        stuID = binding.inputStuid.getText().toString();
 
         if (fname.isEmpty()) {
             binding.inputFname.setError(getResources().getString(R.string.no_input_text));
@@ -160,6 +163,13 @@ public class RegisterFragment extends Fragment {
             valid = false;
         } else {
             binding.inputLname.setError(null);
+        }
+
+        if (stuID.isEmpty()) {
+            binding.inputStuid.setError(getResources().getString(R.string.no_input_text));
+            valid = false;
+        } else {
+            binding.inputStuid.setError(null);
         }
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {

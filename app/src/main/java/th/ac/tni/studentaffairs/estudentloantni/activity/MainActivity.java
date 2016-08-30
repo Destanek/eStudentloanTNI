@@ -69,11 +69,11 @@ public class MainActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
                 if (tab.getPosition() == 0) {
-                    toolbar.setBackgroundColor(0xff5D7E7D);
-                    tabLayout.setBackgroundColor(0xff5D7E7D);
+                    toolbar.setBackgroundColor(0xff00B0FF);
+                    tabLayout.setBackgroundColor(0xff00B0FF);
                 } else if (tab.getPosition() == 1) {
-                    toolbar.setBackgroundColor(0xff5d899d);
-                    tabLayout.setBackgroundColor(0xff5d899d);
+                    toolbar.setBackgroundColor(0xff00B0FF);
+                    tabLayout.setBackgroundColor(0xff00B0FF);
                 }
             }
 
