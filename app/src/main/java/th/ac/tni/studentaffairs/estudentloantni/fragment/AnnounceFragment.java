@@ -31,21 +31,21 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 
 import dmax.dialog.SpotsDialog;
 import th.ac.tni.studentaffairs.estudentloantni.DividerItemDecoration;
 import th.ac.tni.studentaffairs.estudentloantni.R;
 import th.ac.tni.studentaffairs.estudentloantni.adapter.AdapterWebContent;
 import th.ac.tni.studentaffairs.estudentloantni.adapter.TopicAdapter;
-import th.ac.tni.studentaffairs.estudentloantni.dao.DataModelWebContent;
+import th.ac.tni.studentaffairs.estudentloantni.dao.NewDao;
 import th.ac.tni.studentaffairs.estudentloantni.databinding.FragmentAnnounceBinding;
 
 public class AnnounceFragment extends Fragment {
 
     private FragmentAnnounceBinding binding;
 
-    private ArrayList<DataModelWebContent> listWeb;
+    private ArrayList<NewDao> listWeb;
     private AdapterWebContent adapterListWeb;
     private TopicAdapter mTopicAdapter;
     private RecyclerView recyclerView;
@@ -55,7 +55,7 @@ public class AnnounceFragment extends Fragment {
 
     android.app.AlertDialog spotDialog;
 
-    DatabaseReference mDatabase,mTopicRef;
+    DatabaseReference mDatabase, mTopicRef;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -72,12 +72,12 @@ public class AnnounceFragment extends Fragment {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getContext());
         Gson gson = new Gson();
         String json = sharedPrefs.getString("Announce Data", null);
-        if(json!=null){
-            Type type = new TypeToken<ArrayList<DataModelWebContent>>() {}.getType();
+        if (json != null) {
+            Type type = new TypeToken<ArrayList<NewDao>>() {
+            }.getType();
             listWeb = gson.fromJson(json, type);
-        }
-        else{
-            if(haveNetworkConnection()){
+        } else {
+            if (haveNetworkConnection()) {
                 Title t2 = new Title();
                 t2.execute();
             }
@@ -86,11 +86,12 @@ public class AnnounceFragment extends Fragment {
 
     private void initialization() {
 
-        listWeb = new ArrayList<DataModelWebContent>();
+        listWeb = new ArrayList<NewDao>();
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         mTopicRef = mDatabase.child("news");
+
         recyclerView = binding.recycleView;
 
         checkData();
@@ -104,7 +105,7 @@ public class AnnounceFragment extends Fragment {
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getContext(), recyclerView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                DataModelWebContent topicList = listWeb.get(position);
+                NewDao topicList = listWeb.get(position);
 
                 Bundle b = new Bundle();
                 b.putString("url", topicList.getLink());
@@ -117,7 +118,7 @@ public class AnnounceFragment extends Fragment {
 
             @Override
             public void onLongClick(View view, int position) {
-                DataModelWebContent topicList = listWeb.get(position);
+                NewDao topicList = listWeb.get(position);
 
                 Bundle b = new Bundle();
                 b.putString("url", topicList.getLink());
@@ -156,11 +157,12 @@ public class AnnounceFragment extends Fragment {
 
     }
 
-    private void refreshContent(){
+    private void refreshContent() {
 
         new Handler().postDelayed(new Runnable() {
-            @Override public void run() {
-                if(haveNetworkConnection()) {
+            @Override
+            public void run() {
+                if (haveNetworkConnection()) {
                     mTopicAdapter.clear();
                     Title t2 = new Title();
                     t2.execute();
@@ -172,7 +174,7 @@ public class AnnounceFragment extends Fragment {
 
     }
 
-    public void storeData(){
+    public void storeData() {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor editor = sp.edit();
         Gson gson = new Gson();
@@ -207,35 +209,63 @@ public class AnnounceFragment extends Fragment {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            spotDialog = new SpotsDialog(getActivity(),R.style.CustomDialog);
+            spotDialog = new SpotsDialog(getActivity(), R.style.CustomDialog);
             spotDialog.show();
         }
 
         @Override
         protected Void doInBackground(Void... params) {
             try {
-
-                mTopicRef.addValueEventListener(new ValueEventListener() {
+                ValueEventListener postListener = new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        childCount = dataSnapshot.getChildrenCount();
-                        Log.d("ChildCount", "onChildAdded: " + childCount);
-                        childNum = (int) childCount;
-                        for(DataSnapshot dst : dataSnapshot.getChildren()){
-                            Map<String, String> newPost = (Map<String, String>) dst.getValue();
-                            listWeb.add(new DataModelWebContent(newPost.get("message"), newPost.get("link"),newPost.get("date"),newPost.get("type")));
+                        // init list for store
+                        List<NewDao> listNew = new ArrayList<NewDao>();
+                        // get data from firebase
+                        for (DataSnapshot data : dataSnapshot.getChildren()) {
+                            NewDao dao = data.getValue(NewDao.class);
+                            // bind data to list
+                            listNew.add(dao);
                         }
-                        Log.d("GetData", "onDataChange: " + listWeb.size());
-                        spotDialog.dismiss();
-                        mTopicAdapter.notifyDataSetChanged();
-                        storeData();
+                        // loop end to start
+                        int countList = listNew.size();
+                        for (int i = countList - 1; i >= 0; i--) {
+                            // bind to listWeb
+                            listWeb.add(listNew.get(i));
+                            spotDialog.dismiss();
+                            mTopicAdapter.notifyDataSetChanged();
+                            storeData();
+                        }
                     }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
 
                     }
-                });
+                };
+                mTopicRef.addValueEventListener(postListener);
+
+//                mTopicRef.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(DataSnapshot dataSnapshot) {
+//                        childCount = dataSnapshot.getChildrenCount();
+//                        Log.d("ChildCount", "onChildAdded: " + childCount);
+//                        childNum = (int) childCount;
+//                        for (DataSnapshot dst : dataSnapshot.getChildren()) {
+//                            Map<String, String> newPost = (Map<String, String>) dst.getValue();
+//                            listWeb.add(new NewDao(newPost.get("message"), newPost.get("link"), newPost.get("date"), newPost.get("type")));
+//                        }
+//                        Log.d("GetData", "onDataChange: " + listWeb.size());
+//                        spotDialog.dismiss();
+//                        mTopicAdapter.notifyDataSetChanged();
+//                        storeData();
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(DatabaseError databaseError) {
+//
+//                    }
+//                });
 
 //                // Connect to the web site
 //                org.jsoup.nodes.Document document = Jsoup.connect("http://studentaffairs.tni.ac.th/home/?cat=7").get();
@@ -247,7 +277,7 @@ public class AnnounceFragment extends Fragment {
 //                Elements Content1 = document.select("div:has(h2.entry-title) .entry-title a");
 //                int i=0;
 //                for (Element div : Content1) {
-//                    listWeb.add(new DataModelWebContent(div.attr("title"), div.attr("href"),listDate.get(i)));
+//                    listWeb.add(new NewDao(div.attr("title"), div.attr("href"),listDate.get(i)));
 //                    i++;
 //                }
 

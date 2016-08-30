@@ -9,11 +9,11 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import th.ac.tni.studentaffairs.estudentloantni.R;
-import th.ac.tni.studentaffairs.estudentloantni.dao.DataModelWebContent;
+import th.ac.tni.studentaffairs.estudentloantni.dao.NewDao;
 
 public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.MyViewHolder> {
 
-    private ArrayList<DataModelWebContent> topicList = new ArrayList<DataModelWebContent>();
+    private ArrayList<NewDao> topicList = new ArrayList<NewDao>();
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, date;
@@ -25,7 +25,7 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.MyViewHolder
         }
     }
 
-    public TopicAdapter(ArrayList<DataModelWebContent> topicList) {
+    public TopicAdapter(ArrayList<NewDao> topicList) {
         this.topicList = topicList;
     }
 
@@ -39,7 +39,7 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        DataModelWebContent topic = topicList.get(position);
+        NewDao topic = topicList.get(position);
         holder.title.setText(topic.getTitle());
         holder.date.setText(topic.getDate());
     }
@@ -56,7 +56,7 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.MyViewHolder
     }
 
     // Add a list of items
-    public void addAll(ArrayList<DataModelWebContent> list) {
+    public void addAll(ArrayList<NewDao> list) {
         topicList.addAll(list);
         notifyDataSetChanged();
     }

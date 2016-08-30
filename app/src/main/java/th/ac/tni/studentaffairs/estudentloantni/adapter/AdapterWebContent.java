@@ -9,11 +9,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import th.ac.tni.studentaffairs.estudentloantni.dao.DataModelWebContent;
+import th.ac.tni.studentaffairs.estudentloantni.dao.NewDao;
 import th.ac.tni.studentaffairs.estudentloantni.R;
 
-public class AdapterWebContent extends ArrayAdapter<DataModelWebContent> {
-    public AdapterWebContent(Context context, ArrayList<DataModelWebContent> webContent) {
+public class AdapterWebContent extends ArrayAdapter<NewDao> {
+    public AdapterWebContent(Context context, ArrayList<NewDao> webContent) {
         super(context, 0, webContent);
     }
 
@@ -23,7 +23,7 @@ public class AdapterWebContent extends ArrayAdapter<DataModelWebContent> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.listview_item_web_content, parent, false);
         }
 
-        DataModelWebContent data = getItem(position);
+        NewDao data = getItem(position);
         TextView txtTitle = (TextView) convertView.findViewById(R.id.txtTitle);
         txtTitle.setText(data.getTitle());
 
