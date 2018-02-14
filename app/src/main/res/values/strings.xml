@@ -1,8 +1,8 @@
 <resources>
     <!--Header/Toolbar-->
-    <string name="toolbar_title">TNI Studentloan</string>
-    <string name="app_name">TNI studentloan</string>
-    <string name="login_title">TNI Studentloan</string>
+    <string name="toolbar_title">eStudentloan</string>
+    <string name="app_name">eStudentloan</string>
+    <string name="login_title">eStudentloan</string>
     <string name="news_tap">News</string>
     <string name="document_tap">Document</string>
 
@@ -53,6 +53,7 @@
     <string name="edit_account_failed">Edit account failed</string>
     <string name="valid_last_name_input">enter valid last name</string>
     <string name="valid_first_name_input">enter valid first name</string>
+    <string name="valid_stuid_input">enter valid student id</string>
     <string name="no_input_text">at least 1 characters</string>
     <string name="email_already_use">This email is already used</string>
     <string name="register_success">Register Successful</string>
@@ -81,5 +82,7 @@
     <string name="feedback_icon_desc">Feedback Icon</string>
     <string name="web_icon_desc">Web Icon</string>
     <string name="facebook_icon_desc">Facebook Icon</string>
+    <string name="no_data">No further detail</string>
+
 
 </resources>

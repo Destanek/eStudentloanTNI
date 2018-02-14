@@ -1,4 +1,4 @@
-package th.ac.tni.studentaffairs.estudentloantni.dao;
+package th.co.dest.anek.studentloan.dao;
 
 import java.io.Serializable;
 

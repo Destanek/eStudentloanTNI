@@ -1,4 +1,4 @@
-package th.ac.tni.studentaffairs.estudentloantni.activity;
+package th.co.dest.anek.studentloan.activity;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -23,14 +23,14 @@ import com.firebase.client.ValueEventListener;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import th.ac.tni.studentaffairs.estudentloantni.R;
-import th.ac.tni.studentaffairs.estudentloantni.adapter.PageAdapter;
-import th.ac.tni.studentaffairs.estudentloantni.databinding.ActivityMainBinding;
-import th.ac.tni.studentaffairs.estudentloantni.fragment.ChangePasswordFragment;
-import th.ac.tni.studentaffairs.estudentloantni.fragment.ContactFragment;
-import th.ac.tni.studentaffairs.estudentloantni.fragment.DocumentFragment;
-import th.ac.tni.studentaffairs.estudentloantni.fragment.EditAccountFragment;
-import th.ac.tni.studentaffairs.estudentloantni.fragment.LoginFragment;
+import th.co.dest.anek.studentloan.R;
+import th.co.dest.anek.studentloan.adapter.PageAdapter;
+import th.co.dest.anek.studentloan.databinding.ActivityMainBinding;
+import th.co.dest.anek.studentloan.fragment.ChangePasswordFragment;
+import th.co.dest.anek.studentloan.fragment.ContactFragment;
+import th.co.dest.anek.studentloan.fragment.DocumentFragment;
+import th.co.dest.anek.studentloan.fragment.EditAccountFragment;
+import th.co.dest.anek.studentloan.fragment.LoginFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -90,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
         final TextView email = (TextView) nav_header.findViewById(R.id.email);
         final CircleImageView photo = (CircleImageView) nav_header.findViewById(R.id.profile_image);
 
-
         final Firebase ref = new Firebase("https://sizzling-torch-4935.firebaseio.com/");
         ref.addAuthStateListener(new Firebase.AuthStateListener() {
             @Override
@@ -107,8 +106,6 @@ public class MainActivity extends AppCompatActivity {
                             String name = newPost.get("firstname") + " " + newPost.get("lastname");
                             user.setText(name);
                             email.setText(newPost.get("email"));
-
-//                            Log.d("Moo", "Name: " + name + " Email : " + newPost.get("email"));
                         }
 
                         @Override
@@ -124,7 +121,6 @@ public class MainActivity extends AppCompatActivity {
                     user.setText(" ");
                     email.setText(" ");
                     photo.setImageResource(R.drawable.ic_user_logout);
-//                    Log.e("logout","out");
                 }
             }
         });
@@ -187,12 +183,13 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.drawer_login:
                         viewPager.setCurrentItem(1);
 //                        getSupportFragmentManager().beginTransaction().replace(R.id.tap_fragment_2, new LoginFragment()).addToBackStack(MainActivity.class.getName()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.tap_fragment_2, new LoginFragment()).commit();
                         Toast.makeText(getApplicationContext(), R.string.login_selected, Toast.LENGTH_SHORT).show();
                         return true;
                     case R.id.drawer_logout:
                         ref.unauth();
                         viewPager.setCurrentItem(1);
-                        getSupportFragmentManager().beginTransaction().replace(R.id.tap_fragment_2, new LoginFragment()).addToBackStack(MainActivity.class.getName()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.tap_fragment_2, new LoginFragment()).commit();
                         Toast.makeText(getApplicationContext(), R.string.logout_selected, Toast.LENGTH_SHORT).show();
                         return true;
                     case R.id.drawer_pass:
@@ -238,6 +235,7 @@ public class MainActivity extends AppCompatActivity {
 
         //calling sync state is necessary or else your hamburger icon wont show up
         actionBarDrawerToggle.syncState();
+
     }
 
 //    @Override

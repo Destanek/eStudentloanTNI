@@ -1,11 +1,11 @@
-package th.ac.tni.studentaffairs.estudentloantni.activity;
+package th.co.dest.anek.studentloan.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
 
-import th.ac.tni.studentaffairs.estudentloantni.R;
+import th.co.dest.anek.studentloan.R;
 
 public class WebViewActivity extends AppCompatActivity {
 

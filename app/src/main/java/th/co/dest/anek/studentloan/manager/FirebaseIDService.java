@@ -1,4 +1,4 @@
-package th.ac.tni.studentaffairs.estudentloantni.manager;
+package th.co.dest.anek.studentloan.manager;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;

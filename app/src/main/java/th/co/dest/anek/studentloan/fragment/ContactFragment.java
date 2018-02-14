@@ -1,4 +1,4 @@
-package th.ac.tni.studentaffairs.estudentloantni.fragment;
+package th.co.dest.anek.studentloan.fragment;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import th.ac.tni.studentaffairs.estudentloantni.R;
-import th.ac.tni.studentaffairs.estudentloantni.databinding.FragmentContactBinding;
+import th.co.dest.anek.studentloan.R;
+import th.co.dest.anek.studentloan.databinding.FragmentContactBinding;
 
 public class ContactFragment extends Fragment implements View.OnClickListener {
 
@@ -65,11 +65,11 @@ public class ContactFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.feedback:
                 String feedbackURL = "https://docs.google.com/a/tni.ac.th/forms/d/e/1FAIpQLSe5xi4Gqcl2EooyZcD0ThCq3vw8Wa39srunVTLHU4Tor6DJjA/viewform";
-                b.putString("url", feedbackURL);
-                WebView.setArguments(b);
-
-                getFragmentManager().beginTransaction().add(R.id.tap_fragment_2, WebView).hide(ContactFragment.this).addToBackStack(AnnounceFragment.class.getName()).commit();
-//                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(feedbackURL)));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(feedbackURL)));
+//                b.putString("url", feedbackURL);
+//                WebView.setArguments(b);
+//
+//                getFragmentManager().beginTransaction().add(R.id.tap_fragment_2, WebView).hide(ContactFragment.this).addToBackStack(AnnounceFragment.class.getName()).commit();
                 break;
         }
     }

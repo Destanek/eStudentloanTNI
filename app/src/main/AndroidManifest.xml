@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="th.ac.tni.studentaffairs.estudentloantni">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="th.co.dest.anek.studentloan">
 
     <permission
-        android:name="th.ac.tni.studentaffairs.estudentloantni.permission.C2D_MESSAGE"
+        android:name="th.co.dest.anek.studentloan.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
-    <uses-permission
-        android:name="th.ac.tni.studentaffairs.estudentloantni.permission.C2D_MESSAGE" />
 
+    <uses-permission android:name="th.ac.tni.studentaffairs.estudentloantni.permission.C2D_MESSAGE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -19,32 +19,39 @@
         android:icon="@mipmap/ic_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
+        android:theme="@style/AppTheme" >
         <activity
-            android:name=".activity.SplashActivity"
+            android:name="th.co.dest.anek.studentloan.activity.MainActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="th.co.dest.anek.studentloan.activity.SplashActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.WebViewActivity"
+        <activity
+            android:name="th.co.dest.anek.studentloan.activity.WebViewActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <service android:name=".manager.MyFirebaseMessagingService">
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <service android:name="th.co.dest.anek.studentloan.manager.MyFirebaseMessagingService" >
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service android:name=".manager.FirebaseIDService">
+        <service android:name="th.co.dest.anek.studentloan.manager.FirebaseIDService" >
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
     </application>

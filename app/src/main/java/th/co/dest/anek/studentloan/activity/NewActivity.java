@@ -1,12 +1,12 @@
-package th.ac.tni.studentaffairs.estudentloantni.activity;
+package th.co.dest.anek.studentloan.activity;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import th.ac.tni.studentaffairs.estudentloantni.fragment.AnnounceFragment;
-import th.ac.tni.studentaffairs.estudentloantni.R;
+import th.co.dest.anek.studentloan.fragment.AnnounceFragment;
+import th.co.dest.anek.studentloan.R;
 
 public class NewActivity extends android.support.v4.app.Fragment {
 

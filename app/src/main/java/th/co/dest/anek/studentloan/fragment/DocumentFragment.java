@@ -1,4 +1,4 @@
-package th.ac.tni.studentaffairs.estudentloantni.fragment;
+package th.co.dest.anek.studentloan.fragment;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import th.ac.tni.studentaffairs.estudentloantni.R;
+import th.co.dest.anek.studentloan.R;
 
 public class DocumentFragment extends Fragment {
 

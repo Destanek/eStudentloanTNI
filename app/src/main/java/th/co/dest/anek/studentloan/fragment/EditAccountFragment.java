@@ -1,4 +1,4 @@
-package th.ac.tni.studentaffairs.estudentloantni.fragment;
+package th.co.dest.anek.studentloan.fragment;
 
 import android.app.Activity;
 import android.databinding.DataBindingUtil;
@@ -21,15 +21,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import dmax.dialog.SpotsDialog;
-import th.ac.tni.studentaffairs.estudentloantni.R;
-import th.ac.tni.studentaffairs.estudentloantni.databinding.FragmentEditAccountBinding;
+import th.co.dest.anek.studentloan.R;
+import th.co.dest.anek.studentloan.databinding.FragmentEditAccountBinding;
 
 public class EditAccountFragment extends Fragment {
 
     private FragmentEditAccountBinding binding;
 
-    String email, current_fname, current_lname, uid;
-    String new_fname, new_lname, password;
+    String email, current_fname, current_lname, current_stuid, uid;
+    String new_fname, new_lname, new_stuid, password;
 
     private Firebase usersRef, ref;
 
@@ -56,10 +56,12 @@ public class EditAccountFragment extends Fragment {
                 Map<String, String> newPost = (Map<String, String>) dataSnapshot.getValue();
                 current_fname = newPost.get("firstname");
                 current_lname = newPost.get("lastname");
+                current_stuid = newPost.get("stuid");
                 email = newPost.get("email");
 
                 binding.fname.setText(current_fname, TextView.BufferType.EDITABLE);
                 binding.lname.setText(current_lname, TextView.BufferType.EDITABLE);
+                binding.stuid.setText(current_stuid, TextView.BufferType.EDITABLE);
             }
 
             @Override
@@ -118,6 +120,7 @@ public class EditAccountFragment extends Fragment {
         final Map<String, Object> userInfoMap = new HashMap<String, Object>();
         userInfoMap.put("firstname", new_fname);
         userInfoMap.put("lastname", new_lname);
+        userInfoMap.put("stuid", new_stuid);
 
         ref.changePassword(email, password, password, new Firebase.ResultHandler() {
             @Override
@@ -147,6 +150,7 @@ public class EditAccountFragment extends Fragment {
 
         new_fname = binding.fname.getText().toString();
         new_lname = binding.lname.getText().toString();
+        new_stuid = binding.stuid.getText().toString();
         password = binding.password.getText().toString();
 
         if (new_fname.isEmpty()) {
@@ -161,6 +165,13 @@ public class EditAccountFragment extends Fragment {
             valid = false;
         } else {
             binding.lname.setError(null);
+        }
+
+        if (new_stuid.isEmpty()) {
+            binding.stuid.setError(getResources().getString(R.string.valid_stuid_input));
+            valid = false;
+        } else {
+            binding.stuid.setError(null);
         }
 
         if (password.isEmpty() || password.length() < 4 || password.length() > 10) {

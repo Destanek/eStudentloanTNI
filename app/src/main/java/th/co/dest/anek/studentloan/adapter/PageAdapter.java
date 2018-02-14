@@ -1,11 +1,11 @@
-package th.ac.tni.studentaffairs.estudentloantni.adapter;
+package th.co.dest.anek.studentloan.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import th.ac.tni.studentaffairs.estudentloantni.activity.NewActivity;
-import th.ac.tni.studentaffairs.estudentloantni.activity.DocumentActivity;
+import th.co.dest.anek.studentloan.activity.NewActivity;
+import th.co.dest.anek.studentloan.activity.DocumentActivity;
 
 public class PageAdapter extends FragmentStatePagerAdapter {
 

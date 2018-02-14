@@ -1,4 +1,4 @@
-package th.ac.tni.studentaffairs.estudentloantni.fragment;
+package th.co.dest.anek.studentloan.fragment;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import dmax.dialog.SpotsDialog;
-import th.ac.tni.studentaffairs.estudentloantni.R;
-import th.ac.tni.studentaffairs.estudentloantni.databinding.FragmentWebViewBinding;
+import th.co.dest.anek.studentloan.R;
+import th.co.dest.anek.studentloan.databinding.FragmentWebViewBinding;
 
 
 public class FragmentWebview extends Fragment {

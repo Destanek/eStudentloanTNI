@@ -1,4 +1,4 @@
-package th.ac.tni.studentaffairs.estudentloantni.fragment;
+package th.co.dest.anek.studentloan.fragment;
 
 import android.app.Activity;
 import android.databinding.DataBindingUtil;
@@ -17,8 +17,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import dmax.dialog.SpotsDialog;
-import th.ac.tni.studentaffairs.estudentloantni.R;
-import th.ac.tni.studentaffairs.estudentloantni.databinding.FragmentRegisterBinding;
+import th.co.dest.anek.studentloan.R;
+import th.co.dest.anek.studentloan.databinding.FragmentRegisterBinding;
 
 public class RegisterFragment extends Fragment {
 

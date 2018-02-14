@@ -1,4 +1,4 @@
-package th.ac.tni.studentaffairs.estudentloantni.adapter;
+package th.co.dest.anek.studentloan.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,8 +8,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import th.ac.tni.studentaffairs.estudentloantni.R;
-import th.ac.tni.studentaffairs.estudentloantni.dao.NewDao;
+import th.co.dest.anek.studentloan.R;
+import th.co.dest.anek.studentloan.dao.NewDao;
 
 public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.MyViewHolder> {
 

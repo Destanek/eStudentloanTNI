@@ -1,4 +1,4 @@
-package th.ac.tni.studentaffairs.estudentloantni.fragment;
+package th.co.dest.anek.studentloan.fragment;
 
 import android.app.Activity;
 import android.databinding.DataBindingUtil;
@@ -15,8 +15,8 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
 import dmax.dialog.SpotsDialog;
-import th.ac.tni.studentaffairs.estudentloantni.R;
-import th.ac.tni.studentaffairs.estudentloantni.databinding.FragmentChangePasswordBinding;
+import th.co.dest.anek.studentloan.R;
+import th.co.dest.anek.studentloan.databinding.FragmentChangePasswordBinding;
 
 public class ChangePasswordFragment extends Fragment {
 

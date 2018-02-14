@@ -1,7 +1,7 @@
 <resources>
     <!--Header/Toolbar-->
-    <string name="toolbar_title">TNI Studentloan</string>
-    <string name="app_name">TNI Studentloan</string>
+    <string name="toolbar_title">eStudentloan</string>
+    <string name="app_name">eStudentloan</string>
     <string name="login_title">เข้าสู่ระบบ</string>
     <string name="button_login">เข้าสู่ระบบ</string>
     <string name="news_tap">ข่าวสาร</string>
@@ -51,6 +51,7 @@
     <string name="edit_account_failed">ไม่สามารถแก้ไขข้อมูลได้</string>
     <string name="valid_last_name_input">enter valid last name</string>
     <string name="valid_first_name_input">enter valid first name</string>
+    <string name="valid_stuid_input">enter valid student id</string>
     <string name="no_input_text">กรุณาใส่ตัวอักษรอย่างน้อย 1 ตัว</string>
     <string name="email_already_use">อีเมลนี้ได้ถูกใช้ไปแล้ว</string>
     <string name="register_success">ลงทะเบียนสำเร็จ</string>
@@ -83,5 +84,6 @@
     <string name="feedback_icon_desc">Feedback Icon</string>
     <string name="web_icon_desc">Web Icon</string>
     <string name="facebook_icon_desc">Facebook Icon</string>
+    <string name="no_data">ไม่มีข้อมูลเพิ่มเติม</string>
 
 </resources>

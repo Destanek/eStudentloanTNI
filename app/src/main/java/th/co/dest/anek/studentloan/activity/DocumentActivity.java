@@ -1,4 +1,4 @@
-package th.ac.tni.studentaffairs.estudentloantni.activity;
+package th.co.dest.anek.studentloan.activity;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 
-import th.ac.tni.studentaffairs.estudentloantni.fragment.DocumentFragment;
-import th.ac.tni.studentaffairs.estudentloantni.fragment.LoginFragment;
-import th.ac.tni.studentaffairs.estudentloantni.R;
+import th.co.dest.anek.studentloan.R;
+import th.co.dest.anek.studentloan.fragment.DocumentFragment;
+import th.co.dest.anek.studentloan.fragment.LoginFragment;
 
 public class DocumentActivity extends android.support.v4.app.Fragment {
 

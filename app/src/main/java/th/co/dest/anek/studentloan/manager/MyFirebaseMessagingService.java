@@ -1,4 +1,4 @@
-package th.ac.tni.studentaffairs.estudentloantni.manager;
+package th.co.dest.anek.studentloan.manager;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -11,8 +11,8 @@ import android.support.v4.app.NotificationCompat;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
-import th.ac.tni.studentaffairs.estudentloantni.R;
-import th.ac.tni.studentaffairs.estudentloantni.activity.MainActivity;
+import th.co.dest.anek.studentloan.R;
+import th.co.dest.anek.studentloan.activity.MainActivity;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 //    private static final String TAG = "FCM Service";

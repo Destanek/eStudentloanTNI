@@ -27,7 +27,7 @@
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:src="@drawable/app_logo"/>
+            android:src="@drawable/app_name_logo"/>
 
     </LinearLayout>
 

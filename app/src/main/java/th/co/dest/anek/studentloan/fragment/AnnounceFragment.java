@@ -1,4 +1,4 @@
-package th.ac.tni.studentaffairs.estudentloantni.fragment;
+package th.co.dest.anek.studentloan.fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -33,11 +33,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dmax.dialog.SpotsDialog;
-import th.ac.tni.studentaffairs.estudentloantni.DividerItemDecoration;
-import th.ac.tni.studentaffairs.estudentloantni.R;
-import th.ac.tni.studentaffairs.estudentloantni.adapter.TopicAdapter;
-import th.ac.tni.studentaffairs.estudentloantni.dao.NewDao;
-import th.ac.tni.studentaffairs.estudentloantni.databinding.FragmentAnnounceBinding;
+import th.co.dest.anek.studentloan.DividerItemDecoration;
+import th.co.dest.anek.studentloan.R;
+import th.co.dest.anek.studentloan.adapter.TopicAdapter;
+import th.co.dest.anek.studentloan.dao.NewDao;
+import th.co.dest.anek.studentloan.databinding.FragmentAnnounceBinding;
 
 public class AnnounceFragment extends Fragment {
 
@@ -118,13 +118,16 @@ public class AnnounceFragment extends Fragment {
 
     public void openWebView(int position){
         NewDao topicList = listWeb.get(position);
-
-        Bundle b = new Bundle();
-        b.putString("url", topicList.getLink());
-        FragmentWebview f = new FragmentWebview();
-        f.setArguments(b);
-
-        getFragmentManager().beginTransaction().add(R.id.tap_fragment_1, f).hide(AnnounceFragment.this).addToBackStack(AnnounceFragment.class.getName()).commit();
+        if(topicList.getLink()==null){
+            Toast.makeText(getContext(), R.string.no_data,Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Bundle b = new Bundle();
+            b.putString("url", topicList.getLink());
+            FragmentWebview f = new FragmentWebview();
+            f.setArguments(b);
+            getFragmentManager().beginTransaction().add(R.id.tap_fragment_1, f).hide(AnnounceFragment.this).addToBackStack(AnnounceFragment.class.getName()).commit();
+        }
 
     }
 
