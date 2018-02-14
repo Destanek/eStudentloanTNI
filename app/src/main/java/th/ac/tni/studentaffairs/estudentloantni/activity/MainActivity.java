@@ -9,8 +9,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -38,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private DrawerLayout drawerLayout;
-    boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 (getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
@@ -111,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                             user.setText(name);
                             email.setText(newPost.get("email"));
 
-                            Log.d("Moo", "Name: " + name + " Email : " + newPost.get("email"));
+//                            Log.d("Moo", "Name: " + name + " Email : " + newPost.get("email"));
                         }
 
                         @Override
@@ -127,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                     user.setText(" ");
                     email.setText(" ");
                     photo.setImageResource(R.drawable.ic_user_logout);
-                    Log.e("logout","out");
+//                    Log.e("logout","out");
                 }
             }
         });
@@ -189,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     case R.id.drawer_login:
                         viewPager.setCurrentItem(1);
-                        getSupportFragmentManager().beginTransaction().replace(R.id.tap_fragment_2, new LoginFragment()).addToBackStack(MainActivity.class.getName()).commit();
+//                        getSupportFragmentManager().beginTransaction().replace(R.id.tap_fragment_2, new LoginFragment()).addToBackStack(MainActivity.class.getName()).commit();
                         Toast.makeText(getApplicationContext(), R.string.login_selected, Toast.LENGTH_SHORT).show();
                         return true;
                     case R.id.drawer_logout:
@@ -208,9 +205,9 @@ public class MainActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.tap_fragment_2, new EditAccountFragment()).addToBackStack(DocumentFragment.class.getName()).commit();
                         Toast.makeText(getApplicationContext(), R.string.edit_account_selected, Toast.LENGTH_SHORT).show();
                         return true;
-                    case R.id.drawer_settings:
-                        Toast.makeText(getApplicationContext(), R.string.setting_selected, Toast.LENGTH_SHORT).show();
-                        return true;
+//                    case R.id.drawer_settings:
+//                        Toast.makeText(getApplicationContext(), R.string.setting_selected, Toast.LENGTH_SHORT).show();
+//                        return true;
                     default:
                         Toast.makeText(getApplicationContext(), R.string.wrong_selected, Toast.LENGTH_SHORT).show();
                         return true;
@@ -239,49 +236,30 @@ public class MainActivity extends AppCompatActivity {
         //Setting the actionbarToggle to drawer layout
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
 
-        //calling sync state is necessay or else your hamburger icon wont show up
+        //calling sync state is necessary or else your hamburger icon wont show up
         actionBarDrawerToggle.syncState();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
 //    @Override
-//    public void onBackPressed() {
-//        if (doubleBackToExitPressedOnce) {
-//            super.onBackPressed();
-//            return;
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
 //        }
 //
-//        this.doubleBackToExitPressedOnce = true;
-//        Toast.makeText(this, "Please press BACK again to exit", Toast.LENGTH_SHORT).show();
-//
-//        new Handler().postDelayed(new Runnable() {
-//
-//            @Override
-//            public void run() {
-//                doubleBackToExitPressedOnce=false;
-//            }
-//        }, 2000);
+//        return super.onOptionsItemSelected(item);
 //    }
 
     @Override

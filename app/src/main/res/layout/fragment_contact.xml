@@ -19,6 +19,7 @@
                 android:background="@drawable/custom_bg">
 
                 <ImageView
+                    android:contentDescription="@string/facebook_icon_desc"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="40dp"
@@ -30,7 +31,7 @@
                     android:layout_weight="5"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/black"
-                    android:text="กองทุนเงินให้กู้ยืมเพื่อการศึกษา สถาบันเทคโนโลยีไทย-ญี่ปุ่น"/>
+                    android:text="@string/contact_facebook"/>
 
             </LinearLayout>
 
@@ -44,6 +45,7 @@
                 android:background="@drawable/custom_bg">
 
                 <ImageView
+                    android:contentDescription="@string/web_icon_desc"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="50dp"
@@ -55,7 +57,7 @@
                     android:layout_weight="5"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/black"
-                    android:text="ฝ่ายกิจการนักศักษา สถาบันเทคโนโลยีไทย-ญี่ปุ่น"/>
+                    android:text="@string/contact_web"/>
 
             </LinearLayout>
 
@@ -67,11 +69,12 @@
                 android:clickable="true"
                 android:id="@+id/phone"
                 android:background="@drawable/custom_bg"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="2dp">
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_weight="1"
+                    android:contentDescription="@string/phone_icon_desc"
                     android:layout_height="40dp"
                     android:src="@drawable/ic_phone"/>
 
@@ -81,7 +84,35 @@
                     android:layout_weight="5"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/black"
-                    android:text="ฝ่ายกิจการนักศักษา โทร 0-2763-2620-4"/>
+                    android:text="@string/contact_phone"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:clickable="true"
+                android:id="@+id/feedback"
+                android:background="@drawable/custom_bg"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:contentDescription="@string/feedback_icon_desc"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_feedback"/>
+
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp"
+                    android:text="@string/contact_feedback"/>
 
             </LinearLayout>
 

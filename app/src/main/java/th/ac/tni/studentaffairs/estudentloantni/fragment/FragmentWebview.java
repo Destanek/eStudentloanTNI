@@ -34,11 +34,11 @@ public class FragmentWebview extends Fragment {
                 container,
                 false);
         View rootView = binding.getRoot();
-        initInstaces();
+        initInstances();
         return rootView;
     }
 
-    private void initInstaces() {
+    private void initInstances() {
         String myurl = getArguments().getString("url", "empty");
 
         if (!myurl.equals("empty")) {

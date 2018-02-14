@@ -52,6 +52,7 @@
                             android:layout_height="wrap_content"
                             android:hint="@string/email_address"
                             android:inputType="text"
+                            android:freezesText="true"
                             android:maxLines="1"
                             android:padding="16dp"/>
 

@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="Show Document Info"
+        android:text="@string/unavailable"
         android:layout_gravity="center"
         android:textColor="@android:color/black"
         android:gravity="center"

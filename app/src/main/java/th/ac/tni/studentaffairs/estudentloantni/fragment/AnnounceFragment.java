@@ -13,7 +13,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -36,7 +35,6 @@ import java.util.List;
 import dmax.dialog.SpotsDialog;
 import th.ac.tni.studentaffairs.estudentloantni.DividerItemDecoration;
 import th.ac.tni.studentaffairs.estudentloantni.R;
-import th.ac.tni.studentaffairs.estudentloantni.adapter.AdapterWebContent;
 import th.ac.tni.studentaffairs.estudentloantni.adapter.TopicAdapter;
 import th.ac.tni.studentaffairs.estudentloantni.dao.NewDao;
 import th.ac.tni.studentaffairs.estudentloantni.databinding.FragmentAnnounceBinding;
@@ -46,12 +44,7 @@ public class AnnounceFragment extends Fragment {
     private FragmentAnnounceBinding binding;
 
     private ArrayList<NewDao> listWeb;
-    private AdapterWebContent adapterListWeb;
     private TopicAdapter mTopicAdapter;
-    private RecyclerView recyclerView;
-
-    long childCount;
-    int childNum;
 
     android.app.AlertDialog spotDialog;
 
@@ -92,7 +85,7 @@ public class AnnounceFragment extends Fragment {
 
         mTopicRef = mDatabase.child("news");
 
-        recyclerView = binding.recycleView;
+        RecyclerView recyclerView = binding.recycleView;
 
         checkData();
 
@@ -105,55 +98,33 @@ public class AnnounceFragment extends Fragment {
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getContext(), recyclerView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                NewDao topicList = listWeb.get(position);
-
-                Bundle b = new Bundle();
-                b.putString("url", topicList.getLink());
-                FragmentWebview f = new FragmentWebview();
-                f.setArguments(b);
-
-                getFragmentManager().beginTransaction().add(R.id.tap_fragment_1, f).hide(AnnounceFragment.this).addToBackStack(AnnounceFragment.class.getName()).commit();
-
+                openWebView(position);
             }
 
             @Override
             public void onLongClick(View view, int position) {
-                NewDao topicList = listWeb.get(position);
-
-                Bundle b = new Bundle();
-                b.putString("url", topicList.getLink());
-                FragmentWebview f = new FragmentWebview();
-                f.setArguments(b);
-
-                getFragmentManager().beginTransaction().add(R.id.tap_fragment_1, f).hide(AnnounceFragment.this).addToBackStack(AnnounceFragment.class.getName()).commit();
-
+                openWebView(position);
             }
         }));
 
-//        checkData();
-//        adapterListWeb = new AdapterWebContent(getActivity(), listWeb);
-//        binding.lvWeb.setAdapter(adapterListWeb);
-//        binding.lvWeb.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                String getLink = adapterListWeb.getItem(position).getLink();
-//                Log.d("myListView", "onItemClick: " + getLink);
-//
-//                Bundle b = new Bundle();
-//                b.putString("url", getLink);
-//                FragmentWebview f = new FragmentWebview();
-//                f.setArguments(b);
-//
-//                getFragmentManager().beginTransaction().add(R.id.tap_fragment_1, f).hide(AnnounceFragment.this).addToBackStack(AnnounceFragment.class.getName()).commit();
-//
-//            }
-//        });
         binding.swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 refreshContent();
             }
         });
+
+    }
+
+    public void openWebView(int position){
+        NewDao topicList = listWeb.get(position);
+
+        Bundle b = new Bundle();
+        b.putString("url", topicList.getLink());
+        FragmentWebview f = new FragmentWebview();
+        f.setArguments(b);
+
+        getFragmentManager().beginTransaction().add(R.id.tap_fragment_1, f).hide(AnnounceFragment.this).addToBackStack(AnnounceFragment.class.getName()).commit();
 
     }
 
@@ -181,7 +152,6 @@ public class AnnounceFragment extends Fragment {
         String json = gson.toJson(listWeb);
         editor.putString("Announce Data", json);
         editor.commit();
-        Log.d("cacheData", ": Success");
     }
 
     private boolean haveNetworkConnection() {
@@ -193,7 +163,7 @@ public class AnnounceFragment extends Fragment {
         if (activeNetwork != null) { // connected to the internet
             if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI) {
                 haveConnectedWifi = true;
-                Toast.makeText(getContext(), activeNetwork.getTypeName(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), activeNetwork.getTypeName(), Toast.LENGTH_SHORT).show();
             } else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
                 haveConnectedMobile = true;
             }
@@ -245,42 +215,6 @@ public class AnnounceFragment extends Fragment {
                 };
                 mTopicRef.addValueEventListener(postListener);
 
-//                mTopicRef.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(DataSnapshot dataSnapshot) {
-//                        childCount = dataSnapshot.getChildrenCount();
-//                        Log.d("ChildCount", "onChildAdded: " + childCount);
-//                        childNum = (int) childCount;
-//                        for (DataSnapshot dst : dataSnapshot.getChildren()) {
-//                            Map<String, String> newPost = (Map<String, String>) dst.getValue();
-//                            listWeb.add(new NewDao(newPost.get("message"), newPost.get("link"), newPost.get("date"), newPost.get("type")));
-//                        }
-//                        Log.d("GetData", "onDataChange: " + listWeb.size());
-//                        spotDialog.dismiss();
-//                        mTopicAdapter.notifyDataSetChanged();
-//                        storeData();
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(DatabaseError databaseError) {
-//
-//                    }
-//                });
-
-//                // Connect to the web site
-//                org.jsoup.nodes.Document document = Jsoup.connect("http://studentaffairs.tni.ac.th/home/?cat=7").get();
-//                // Get the html document title
-//                Elements Date = document.select("time.published");
-//                for (Element div : Date) {
-//                    listDate.add(div.text());
-//                }
-//                Elements Content1 = document.select("div:has(h2.entry-title) .entry-title a");
-//                int i=0;
-//                for (Element div : Content1) {
-//                    listWeb.add(new NewDao(div.attr("title"), div.attr("href"),listDate.get(i)));
-//                    i++;
-//                }
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -289,7 +223,6 @@ public class AnnounceFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void result) {
-//            adapterListWeb.notifyDataSetChanged();
         }
     }
 

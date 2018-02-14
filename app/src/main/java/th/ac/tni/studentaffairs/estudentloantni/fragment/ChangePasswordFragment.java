@@ -22,8 +22,8 @@ public class ChangePasswordFragment extends Fragment {
 
     private FragmentChangePasswordBinding binding;
 
-    private View view;
-    private String oldpassword, newpassword, confirmpassword, email;
+    private String OldPassword;
+    private String NewPassword;
 
     @Nullable
     @Override
@@ -63,8 +63,8 @@ public class ChangePasswordFragment extends Fragment {
         final SpotsDialog spotDialog = new SpotsDialog(getActivity(), R.style.CustomDialogTransaction);
         spotDialog.show();
 
-        oldpassword = binding.oldPass.getText().toString();
-        newpassword = binding.newPass.getText().toString();
+        OldPassword = binding.oldPass.getText().toString();
+        NewPassword = binding.newPass.getText().toString();
 
         new android.os.Handler().postDelayed(
                 new Runnable() {
@@ -80,8 +80,8 @@ public class ChangePasswordFragment extends Fragment {
         getActivity().setResult(Activity.RESULT_OK, null);
         Firebase ref = new Firebase("https://sizzling-torch-4935.firebaseio.com/");
         AuthData authData = ref.getAuth();
-        email = authData.getProviderData().get("email").toString();
-        ref.changePassword(email, oldpassword, newpassword, new Firebase.ResultHandler() {
+        String email = authData.getProviderData().get("email").toString();
+        ref.changePassword(email, OldPassword, NewPassword, new Firebase.ResultHandler() {
             @Override
             public void onSuccess() {
                 Toast.makeText(getActivity(), R.string.change_password_success, Toast.LENGTH_LONG).show();
@@ -103,25 +103,25 @@ public class ChangePasswordFragment extends Fragment {
     public boolean validate() {
         boolean valid = true;
 
-        oldpassword = binding.oldPass.getText().toString();
-        newpassword = binding.newPass.getText().toString();
-        confirmpassword = binding.confirmNewPass.getText().toString();
+        OldPassword = binding.oldPass.getText().toString();
+        NewPassword = binding.newPass.getText().toString();
+        String confirmPassword = binding.confirmNewPass.getText().toString();
 
-        if (oldpassword.isEmpty()) {
+        if (OldPassword.isEmpty()) {
             binding.oldPass.setError(getResources().getString(R.string.valid_password_input));
             valid = false;
         } else {
             binding.oldPass.setError(null);
         }
 
-        if (newpassword.isEmpty() || newpassword.length() < 4 || newpassword.length() > 10) {
+        if (NewPassword.isEmpty() || NewPassword.length() < 4 || NewPassword.length() > 10) {
             binding.newPass.setError(getResources().getString(R.string.valid_password_input));
             valid = false;
         } else {
             binding.newPass.setError(null);
         }
 
-        if (!newpassword.equals(confirmpassword)) {
+        if (!NewPassword.equals(confirmPassword)) {
             binding.confirmNewPass.setError(getResources().getString(R.string.invalid_confirm_password));
             valid = false;
         } else {

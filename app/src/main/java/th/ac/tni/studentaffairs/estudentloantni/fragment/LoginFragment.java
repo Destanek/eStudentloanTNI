@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
-import com.google.firebase.auth.FirebaseAuth;
 
 import dmax.dialog.SpotsDialog;
 import th.ac.tni.studentaffairs.estudentloantni.R;
@@ -26,7 +25,6 @@ public class LoginFragment extends Fragment {
     private FragmentLoginBinding binding;
 
     String email_address, pass;
-    private FirebaseAuth mAuth;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,7 +34,6 @@ public class LoginFragment extends Fragment {
                 false);
         View rootView = binding.getRoot();
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-        mAuth = FirebaseAuth.getInstance();
         initialization();
         return rootView;
     }

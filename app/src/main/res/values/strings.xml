@@ -1,8 +1,8 @@
 <resources>
     <!--Header/Toolbar-->
-    <string name="toolbar_title">eStudentloan</string>
-    <string name="app_name">EstudentloanTNI</string>
-    <string name="login_title">eStudentloan</string>
+    <string name="toolbar_title">TNI Studentloan</string>
+    <string name="app_name">TNI studentloan</string>
+    <string name="login_title">TNI Studentloan</string>
     <string name="news_tap">News</string>
     <string name="document_tap">Document</string>
 
@@ -72,5 +72,14 @@
     <string name="btnExit">Yes</string>
     <string name="btnNo">No</string>
     <string name="auth_failed">Sign up failed</string>
+    <string name="unavailable">This section currently unavailable</string>
+    <string name="contact_facebook">กองทุนเงินให้กู้ยืมเพื่อการศึกษา สถาบันเทคโนโลยีไทย-ญี่ปุ่น</string>
+    <string name="contact_web">ฝ่ายกิจการนักศักษา สถาบันเทคโนโลยีไทย-ญี่ปุ่น</string>
+    <string name="contact_phone">ฝ่ายกิจการนักศักษา โทร 02-763-2620-4</string>
+    <string name="contact_feedback">Send Feedback</string>
+    <string name="phone_icon_desc">Phone Icon</string>
+    <string name="feedback_icon_desc">Feedback Icon</string>
+    <string name="web_icon_desc">Web Icon</string>
+    <string name="facebook_icon_desc">Facebook Icon</string>
 
 </resources>

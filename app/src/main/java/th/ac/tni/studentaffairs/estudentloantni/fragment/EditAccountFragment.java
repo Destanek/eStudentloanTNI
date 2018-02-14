@@ -5,7 +5,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,8 +27,6 @@ import th.ac.tni.studentaffairs.estudentloantni.databinding.FragmentEditAccountB
 public class EditAccountFragment extends Fragment {
 
     private FragmentEditAccountBinding binding;
-
-    private View view;
 
     String email, current_fname, current_lname, uid;
     String new_fname, new_lname, password;
@@ -121,8 +118,6 @@ public class EditAccountFragment extends Fragment {
         final Map<String, Object> userInfoMap = new HashMap<String, Object>();
         userInfoMap.put("firstname", new_fname);
         userInfoMap.put("lastname", new_lname);
-
-        Log.d("Moo", "onEditSuccess: " + email);
 
         ref.changePassword(email, password, password, new Firebase.ResultHandler() {
             @Override

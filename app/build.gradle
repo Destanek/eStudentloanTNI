@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 24
     buildToolsVersion "23.0.3"
 
     defaultConfig {
         applicationId "th.ac.tni.studentaffairs.estudentloantni"
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -25,22 +25,20 @@ android {
 }
 
 // def = var
-def supportLibraryVersion = "23.3.0"
+def supportLibraryVersion = "24.2.0"
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.android.support:multidex:1.0.1'
     // Support Library
     compile "com.android.support:appcompat-v7:${supportLibraryVersion}"
     compile "com.android.support:design:${supportLibraryVersion}"
     compile "com.android.support:support-v4:${supportLibraryVersion}"
     // Google Library
-    compile 'com.google.android.gms:play-services:9.4.0'
+    compile 'com.google.android.gms:play-services-gcm:9.4.0'
     // Firebase Library
     compile 'com.google.firebase:firebase-core:9.4.0'
     compile 'com.google.firebase:firebase-messaging:9.4.0'
-    compile 'com.google.firebase:firebase-storage:9.4.0'
-    compile 'com.google.firebase:firebase-auth:9.4.0'
     compile 'com.firebaseui:firebase-ui-database:0.4.4'
     compile 'com.firebase:firebase-client-android:2.5.2+'
     // Gson Library
